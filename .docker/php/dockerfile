@@ -3,6 +3,8 @@ FROM php:8.1-fpm
 ENV USER=www
 ENV GROUP=www
 
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -11,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    nodejs
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
