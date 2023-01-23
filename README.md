@@ -62,3 +62,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Installation
+
+-   Step 1: Check available ports on your local machine `$ sudo lsof -i -P -n | grep LISTEN` in case they are busy update `docker-compose.yml` and `.env` with appropriate ones
+    - default ports (mysql = 3306) , (adminer = 8080) , (nginx = 80) , (redis = 6379) (9000)
+-   Step 2: Install docker from official website based on your local system `https://docs.docker.com/engine/install`
+-   Step 3: Install git locally
+### Notice : The following commands must be run from the project root
+- Step 4: Clone the project
+- Step 5: Run `cat .env.example >> .env `
+- Step 6: Run `sudo docker-compose up -d --build` in detached mode
+- Step 7: Run `sudo docker ps` to check if containers are running
+- Step 9: Bash into backend container`docker exec -it backend /bin/bash` and inside it run the following commands:
+    - `npm install`
+    - `composer update`
+    - `composer install`
+    - `composer dump-autoload`
+    - `php artisan key:generate`
+    - `php artisan optimize`
